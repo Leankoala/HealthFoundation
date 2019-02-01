@@ -40,9 +40,9 @@ class SlaveStatus implements Check
         if (is_array($fields)) {
             if (array_key_exists($this->field, $fields)) {
                 if ($fields[$this->field] == $this->value) {
-                    return new Result(Result::STATUS_PASS, 'Field ' . $this->field . ' has value ' . $this->value . ' as expected.');
+                    return new Result(Result::STATUS_PASS, 'Field "' . $this->field . '"" has value "' . $this->value . '" which was expected.');
                 } else {
-                    return new Result(Result::STATUS_FAIL, 'Field ' . $this->field . ' has value ' . $fields[$this->field] . '. Expected was ' . $this->value);
+                    return new Result(Result::STATUS_FAIL, 'Field "' . $this->field . '"" has value ' . $fields[$this->field] . '. Expected was "' . $this->value . '"');
                 }
             }
         }

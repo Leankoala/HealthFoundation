@@ -3,7 +3,6 @@
 namespace Leankoala\HealthFoundation;
 
 use Leankoala\HealthFoundation\Check\Check;
-use Leankoala\HealthFoundation\Check\Result;
 
 class HealthFoundation
 {

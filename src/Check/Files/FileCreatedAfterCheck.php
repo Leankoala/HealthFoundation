@@ -25,7 +25,7 @@ class FileCreatedAfterCheck implements Check
         foreach ($files as $file) {
             if (is_file($file)) {
                 if (filemtime($file) >= $this->date->getTimestamp()) {
-                    return new Result(Result::STATUS_PASS, 'At least one file (name: ' . basename($file) . ', created: ' . date('Y-d-m H:i', filemtime($file)) . ') was found created after ' . $this->date->format('Y-m-d H:m') . '.');
+                    return new Result(Result::STATUS_PASS, 'At least one file (name: ' . basename($file) . ', created: ' . date('Y-d-m H:i', filemtime($file)) . ') was created after ' . $this->date->format('Y-m-d H:m') . '.');
                 }
             }
         }

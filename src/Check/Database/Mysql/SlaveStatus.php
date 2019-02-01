@@ -35,13 +35,14 @@ class SlaveStatus implements Check
 
         $result = $mysqli->query("SHOW SLAVE STATUS");
 
-        while ($field = $result->fetch_assoc()) {
-            $key = $field['Variable_name'];
-            if ($key == $this->field) {
-                if ($field['value'] == $this->value) {
+        $fields = $result->fetch_assoc();
+
+        if (is_array($fields)) {
+            if (array_key_exists($this->field, $fields)) {
+                if ($fields[$this->field] == $this->value) {
                     return new Result(Result::STATUS_PASS, 'Field ' . $this->field . ' has value ' . $this->value . ' as expected.');
                 } else {
-                    return new Result(Result::STATUS_FAIL, 'Field ' . $this->field . ' has value ' . $field['value'] . '. Expected was ' . $this->value);
+                    return new Result(Result::STATUS_FAIL, 'Field ' . $this->field . ' has value ' . $fields[$this->field] . '. Expected was ' . $this->value);
                 }
             }
         }

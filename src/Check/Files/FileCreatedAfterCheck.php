@@ -25,7 +25,7 @@ class FileCreatedAfterCheck implements Check
         foreach ($files as $file) {
             if (is_file($file)) {
                 if (filemtime($file) >= $this->date->getTimestamp()) {
-                    return new Result(Result::STATUS_PASS, 'At least one file (' . $file . ') was found newer than ' . $this->date->format('Y-m-d H:m:s') . '.');
+                    return new Result(Result::STATUS_PASS, 'At least one file ("' . basename($file) . '", created: ' . date('Y-d-m H:i', filemtime($file)) . ') was found newer than ' . $this->date->format('Y-m-d H:m') . '.');
                 }
             }
         }

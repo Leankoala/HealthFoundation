@@ -27,7 +27,26 @@ class SlaveStatus implements Check
 
     public function run()
     {
-        return new Result(Result::STATUS_PASS, 'All mandatory fields found.');
+        $mysqli = new \mysqli($this->host, $this->userName, $this->password);
+
+        if ($mysqli->connect_errno) {
+            return new Result(Result::STATUS_FAIL, sprintf("Connect failed: %s\n", $mysqli->connect_error));
+        }
+
+        $result = $mysqli->query("SHOW SLAVE STATUS");
+
+        while ($field = $result->fetch_assoc()) {
+            $key = $field['Variable_name'];
+            if ($key == $this->field) {
+                if ($field['value'] == $this->value) {
+                    return new Result(Result::STATUS_PASS, 'Field ' . $this->field . ' has value ' . $this->value . ' as expected.');
+                } else {
+                    return new Result(Result::STATUS_FAIL, 'Field ' . $this->field . ' has value ' . $field['value'] . '. Expected was ' . $this->value);
+                }
+            }
+        }
+
+        return new Result(Result::STATUS_FAIL, 'Field "' . $this->field . '" was not found in database slave status.');
     }
 
     public function getIdentifier()

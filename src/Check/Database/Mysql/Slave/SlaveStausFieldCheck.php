@@ -1,13 +1,13 @@
 <?php
 
-namespace Leankoala\HealthFoundation\Check\Database\Mysql;
+namespace Leankoala\HealthFoundation\Check\Database\Mysql\Slave;
 
 use Leankoala\HealthFoundation\Check\Check;
 use Leankoala\HealthFoundation\Check\Result;
 
-class SlaveStatus implements Check
+class SlaveStausFieldCheck implements Check
 {
-    const IDENTFIER = 'base:database:mysql:slaveStatus';
+    const IDENTFIER = 'base:database:mysql:slave:slaveStatusField';
 
     private $userName;
     private $password;

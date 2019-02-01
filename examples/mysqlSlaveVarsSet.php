@@ -5,13 +5,13 @@ include_once __DIR__ . '/../vendor/autoload.php';
 $foundation = new \Leankoala\HealthFoundation\HealthFoundation();
 
 // slave status check
-$slaveCheckRunning  = new \Leankoala\HealthFoundation\Check\Database\Mysql\SlaveStatus();
+$slaveCheckRunning = new \Leankoala\HealthFoundation\Check\Database\Mysql\Slave\SlaveStausFieldCheck();
 $slaveCheckRunning->init('Slave_IO_Running', 'Yes');
 
 $foundation->registerCheck($slaveCheckRunning);
 
 // slave status check
-$slaveChecSqlkRunning  = new \Leankoala\HealthFoundation\Check\Database\Mysql\SlaveStatus();
+$slaveChecSqlkRunning = new \Leankoala\HealthFoundation\Check\Database\Mysql\Slave\SlaveStausFieldCheck();
 $slaveChecSqlkRunning->init('Slave_SQL_Running', 'Yes');
 
 $foundation->registerCheck($slaveChecSqlkRunning);

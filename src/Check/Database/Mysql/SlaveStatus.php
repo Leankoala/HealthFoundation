@@ -7,7 +7,7 @@ use Leankoala\HealthFoundation\Check\Result;
 
 class SlaveStatus implements Check
 {
-    const IDENTFIER = 'base:database:myql:slaveStatus';
+    const IDENTFIER = 'base:database:mysql:slaveStatus';
 
     private $userName;
     private $password;

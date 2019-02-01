@@ -1,0 +1,20 @@
+{
+  "name": "leankoala/healthfoundation",
+  "description": "A expendable health check framework for PHP",
+  "authors": [
+    {
+      "name": "Nils Langner",
+      "email": "nils.langner@leankoala.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.0.0",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Leankoala\\HealthFoundation\\": "src/"
+    }
+  },
+  "license": "MIT"
+}

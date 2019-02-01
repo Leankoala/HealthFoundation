@@ -7,7 +7,7 @@ use Leankoala\HealthFoundation\Check\Result;
 
 class FileCreatedAfterCheck implements Check
 {
-    const IDENTIFIER = 'base:files:newerThan';
+    const IDENTIFIER = 'base:files:fileCreatedAfter';
 
     private $directory;
 

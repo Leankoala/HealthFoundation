@@ -19,12 +19,8 @@ class Result
     private $message;
 
     /**
-     * @var Check
-     */
-    private $check;
-
-    /**
      * Result constructor.
+     *
      * @param $status
      * @param $message
      */

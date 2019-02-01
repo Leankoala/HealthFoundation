@@ -8,13 +8,16 @@
     }
   ],
   "require": {
-    "php": ">=7.0.0",
-    "ext-json": "*"
+    "php": ">=7.0.0"
   },
   "autoload": {
     "psr-4": {
       "Leankoala\\HealthFoundation\\": "src/"
     }
+  },
+  "suggest": {
+    "ext-mysqli": "Needed if database checks are used",
+    "ext-json": "Used for most output formats"
   },
   "license": "MIT"
 }

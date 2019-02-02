@@ -4,11 +4,10 @@ include_once __DIR__ . '/../vendor/autoload.php';
 
 $foundation = new \Leankoala\HealthFoundation\HealthFoundation();
 
-// max disc usage 95%
-$fileCreatedAfterCheck = new \Leankoala\HealthFoundation\Check\Files\Content\NumberOfLinesCheck();
-$fileCreatedAfterCheck->init('/Users/nils.langner/Projekte/HealthFoundation/composer.lock', 15, \Leankoala\HealthFoundation\Check\Files\Content\NumberOfLinesCheck::RELATION_MIN);
+$numberOfLinesCheck = new \Leankoala\HealthFoundation\Check\Files\Content\NumberOfLinesCheck();
+$numberOfLinesCheck->init('/Users/nils.langner/Projekte/HealthFoundation/composer.lock', 15, \Leankoala\HealthFoundation\Check\Files\Content\NumberOfLinesCheck::RELATION_MIN);
 
-$foundation->registerCheck($fileCreatedAfterCheck);
+$foundation->registerCheck($numberOfLinesCheck);
 
 $runResult = $foundation->runHealthCheck();
 

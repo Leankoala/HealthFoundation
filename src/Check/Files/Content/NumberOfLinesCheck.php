@@ -25,7 +25,7 @@ class NumberOfLinesCheck implements Check
         if (!file_exists($this->file)) {
             return new Result(Result::STATUS_FAIL, 'Unable to get document length because file does not exist.');
         }
-        
+
         if ($this->pattern) {
             $grep = ' | grep "' . $this->pattern . '"';
         } else {
@@ -38,13 +38,13 @@ class NumberOfLinesCheck implements Check
         $numberLines = (int)$output[0];
 
         if ($this->relation === self::RELATION_MAX) {
-            if ($numberLines > $command) {
+            if ($numberLines > $this->limit) {
                 return new Result(Result::STATUS_FAIL, 'The document contains too many lines (' . $numberLines . '). Expected where ' . $this->limit . ' at the most.');
             } else {
                 return new Result(Result::STATUS_PASS, 'The document contains ' . $numberLines . ' lines. Expected where ' . $this->limit . ' at the most.');
             }
         } else {
-            if ($numberLines < $command) {
+            if ($numberLines < $this->limit) {
                 return new Result(Result::STATUS_FAIL, 'The document contains too few lines (' . $numberLines . '). Expected where ' . $this->limit . ' at least.');
             } else {
                 return new Result(Result::STATUS_PASS, 'The document contains ' . $numberLines . ' lines. Expected where ' . $this->limit . ' at least.');

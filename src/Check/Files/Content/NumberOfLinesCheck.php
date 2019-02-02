@@ -22,6 +22,10 @@ class NumberOfLinesCheck implements Check
 
     public function run()
     {
+        if (!file_exists($this->file)) {
+            return new Result(Result::STATUS_FAIL, 'Unable to get document length because file does not exist.');
+        }
+        
         if ($this->pattern) {
             $grep = ' | grep "' . $this->pattern . '"';
         } else {

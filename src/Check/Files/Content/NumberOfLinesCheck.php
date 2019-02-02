@@ -23,7 +23,7 @@ class NumberOfLinesCheck implements Check
     public function run()
     {
         if ($this->pattern) {
-            $grep = ' | grep ' . $this->pattern;
+            $grep = ' | grep "' . $this->pattern . '"';
         } else {
             $grep = '';
         }

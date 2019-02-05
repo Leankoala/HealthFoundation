@@ -48,11 +48,13 @@ but there is an simple interface that can be implemented to create new formats.
 
 ### Implemented health checks
 
+As this is an open source project we want everybody to submit their own checks, that is why we provide the main author of every check in this list.
+
 - Database
   - MySQL
     - Slave
       - **SlaveStatusField** (nils.langner@leankoala.com)
-      
+    -  **MysqlRunning** (nils.langner@leankoala.com)   
 - Device  
   - **SpaceUsed** (nils.langner@leankoala.com)
 - Files

@@ -5,7 +5,7 @@ namespace Leankoala\HealthFoundation\Check\Database\Mysql\Slave;
 use Leankoala\HealthFoundation\Check\Check;
 use Leankoala\HealthFoundation\Check\Result;
 
-class SlaveStausFieldCheck implements Check
+class SlaveStatusFieldCheck implements Check
 {
     const IDENTFIER = 'base:database:mysql:slave:slaveStatusField';
 

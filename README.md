@@ -54,7 +54,9 @@ As this is an open source project we want everybody to submit their own checks, 
   - MySQL
     - Slave
       - **SlaveStatusField** (nils.langner@leankoala.com)
-    -  **MysqlRunning** (nils.langner@leankoala.com)   
+    -  **MysqlRunning** (nils.langner@leankoala.com)  
+  - Redis
+    - **ListLength** (nils.langner@leankoala.com)  
 - Device  
   - **SpaceUsed** (nils.langner@leankoala.com)
 - Files

@@ -5,10 +5,10 @@ include_once __DIR__ . '/../vendor/autoload.php';
 $foundation = new \Leankoala\HealthFoundation\HealthFoundation();
 
 // check if mysql database is running
-$slaveCheckRunning = new \Leankoala\HealthFoundation\Check\Database\Mysql\MysqlRunningCheck();
-$slaveCheckRunning->init('root', '122');
+$mysqlRunningCheck = new \Leankoala\HealthFoundation\Check\Database\Mysql\MysqlRunningCheck();
+$mysqlRunningCheck->init('root', '122');
 
-$foundation->registerCheck($slaveCheckRunning);
+$foundation->registerCheck($mysqlRunningCheck);
 
 $runResult = $foundation->runHealthCheck();
 

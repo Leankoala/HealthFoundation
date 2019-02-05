@@ -28,8 +28,12 @@ $foundation->registerCheck($spaceUsedCheck);
 $runResult = $foundation->runHealthCheck();
 
 $formatter = new \Leankoala\HealthFoundation\Result\Format\Ietf\IetfFormat();
-$formatter->handle($runResult, 'Storage server is up and running.', 'Some problems occurred on storage server.');
-
+    
+$formatter->handle(
+    $runResult, 
+    'Storage server is up and running.', 
+    'Some problems occurred on storage server.'
+);
 ```
 ### Checks
 

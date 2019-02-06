@@ -66,7 +66,17 @@ As this is an open source project we want everybody to submit their own checks, 
 
 ### Ideas for health checks
 
-- Redis
-  -  Queue Length
-  
+- Database
+  - MySQL
+    - **NumberOfReturnedElements**
+  - Redis
+    - **isRunning**
+    
+    
+## Outlook / Ideas
+
+- **Config files** - it should be possible to configure the health check without writing a line of code
+- **Suggestions** - the tool should find on its own what can be tested
+    
+    
   

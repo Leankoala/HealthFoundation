@@ -50,6 +50,9 @@ but there is an simple interface that can be implemented to create new formats.
 
 As this is an open source project we want everybody to submit their own checks, that is why we provide the main author of every check in this list.
 
+- Basic
+  - Number
+    - **LessThan** (nils.langner@leankoala.com) 
 - Database
   - MySQL
     - Slave

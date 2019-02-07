@@ -39,7 +39,7 @@ $formatter->handle(
 
 ### Formatter
 
-It is possible to produce any kind of health check format. At the moment the IETF standard ([Health Check Response Format for HTTP APIs](https://tools.ietf.org/id/draft-inadarei-api-health-check-01.html)) is supported 
+It is possible to produce any kind of health check format. At the moment the IETF standard ([Health Check Response Format for HTTP APIs](https://datatracker.ietf.org/doc/draft-inadarei-api-health-check/?include_text=1)) is supported 
 but there is an simple interface that can be implemented to create new formats.
 
 ## Status

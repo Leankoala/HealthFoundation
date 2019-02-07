@@ -30,7 +30,7 @@ class LessThanCheck implements Check
     public function run()
     {
         if ($this->currentValue > $this->maxValue) {
-            return new Result(Result::STATUS_FAIL, 'The given value ("' . $this->valueName . '") is too big, it must be less than ' . $this->maxValue . '.');
+            return new Result(Result::STATUS_FAIL, 'The given value ("' . $this->valueName . '") is ' . $this->currentValue . ' and too big, it must be less than ' . $this->maxValue . '.');
         } else {
             return new Result(Result::STATUS_PASS, 'The value ("' . $this->valueName . '") was ' . $this->currentValue . '. Maximum was < ' . $this->maxValue . '.');
         }

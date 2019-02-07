@@ -37,8 +37,6 @@ $formatter->handle(
 ```
 ### Checks
 
-
-
 ### Formatter
 
 It is possible to produce any kind of health check format. At the moment the IETF standard ([Health Check Response Format for HTTP APIs](https://tools.ietf.org/id/draft-inadarei-api-health-check-01.html)) is supported 
@@ -69,7 +67,25 @@ As this is an open source project we want everybody to submit their own checks, 
 
 ### Ideas for health checks
 
-- Redis
-  -  Queue Length
-  
+- Database
+  - MySQL
+    - **NumberOfReturnedElements**
+  - Redis
+    - **isRunning**
+  - Files
+    - **isWritable**  
+- Tool
+  - Wordpress
+    - Plugins
+      - **NumberOfOutdatedPlugins**
+    - **isOutdated**
+    - **isInsecure**    
+    
+    
+## Outlook / Ideas
+
+- **Config files** - it should be possible to configure the health check without writing a line of code
+- **Suggestions** - the tool should find on its own what can be tested
+- **Plugins** - It would be great if there where plugins/bundles for WordPress, Shopware, Symfony etc.    
+    
   

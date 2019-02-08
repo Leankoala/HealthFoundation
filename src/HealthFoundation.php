@@ -2,7 +2,9 @@
 
 namespace Leankoala\HealthFoundation;
 
+use GuzzleHttp\Client;
 use Leankoala\HealthFoundation\Check\Check;
+use Leankoala\HealthFoundation\Check\HttpClientAwareCheck;
 
 class HealthFoundation
 {
@@ -11,8 +13,35 @@ class HealthFoundation
      */
     private $registeredChecks = [];
 
+    /**
+     * @var Client
+     */
+    private $httpClient;
+
+    public function setHttpClient(Client $httpClient)
+    {
+        $this->httpClient = $httpClient;
+    }
+
+    /**
+     * Return the current httpClient if set otherwise create one.
+     *
+     * @return Client
+     */
+    private function getHttpClient()
+    {
+        if (!$this->httpClient) {
+            $this->httpClient = new Client();
+        }
+
+        return $this->httpClient;
+    }
+
     public function registerCheck(Check $check, $failOnFail = true)
     {
+        if ($check instanceof HttpClientAwareCheck) {
+            $check->setHttpClient($this->getHttpClient());
+        }
         $this->registeredChecks[] = $check;
     }
 

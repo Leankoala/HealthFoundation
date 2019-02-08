@@ -10,12 +10,12 @@ class Result
     const STATUS_PASS = 'pass';
 
     /**
-     * healthy, with some concerns
+     * Healthy, with some concerns
      */
     const STATUS_WARN = 'warn';
 
     /**
-     * unhealthy
+     * Unhealthy
      */
     const STATUS_FAIL = 'fail';
 

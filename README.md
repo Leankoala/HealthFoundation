@@ -72,8 +72,9 @@ As this is an open source project we want everybody to submit their own checks, 
     - **NumberOfReturnedElements**
   - Redis
     - **isRunning**
-  - Files
-    - **isWritable**  
+- Files
+  - **isWritable**  
+  - **FileEditedAfter**    
 - Tool
   - Wordpress
     - Plugins
@@ -87,5 +88,4 @@ As this is an open source project we want everybody to submit their own checks, 
 - **Config files** - it should be possible to configure the health check without writing a line of code
 - **Suggestions** - the tool should find on its own what can be tested
 - **Plugins** - It would be great if there where plugins/bundles for WordPress, Shopware, Symfony etc.    
-    
-  
+

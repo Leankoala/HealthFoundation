@@ -64,6 +64,9 @@ As this is an open source project we want everybody to submit their own checks, 
   - Content
     - **NumberOfLines** (nils.langner@leankoala.com)
   - **FileCreatedAfter** (nils.langner@leankoala.com)  
+- Resource
+  - HTTP
+    - **StatusCode** (galenski@online-verlag-freiburg.de)  
 
 ### Ideas for health checks
 

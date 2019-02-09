@@ -9,7 +9,8 @@
   ],
   "require": {
     "php": ">=7.0.0",
-    "guzzlehttp/guzzle": "^6.3"
+    "guzzlehttp/guzzle": "^6.3",
+    "uptime/uptime": "0.2.0"
   },
   "autoload": {
     "psr-4": {

@@ -60,6 +60,7 @@ As this is an open source project we want everybody to submit their own checks, 
     - **ListLength** (nils.langner@leankoala.com)  
 - Device  
   - **SpaceUsed** (nils.langner@leankoala.com)
+  - **Uptime** (nils.langner@leankoala.com)
 - Files
   - Content
     - **NumberOfLines** (nils.langner@leankoala.com)

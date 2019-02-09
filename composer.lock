@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "25bcff33af0a2a6358aedc65beb788bd",
+    "content-hash": "f239213cf11b8d2d9e3e18aa0d873ab7",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -278,6 +278,55 @@
             ],
             "description": "A polyfill for getallheaders.",
             "time": "2016-02-11T07:05:27+00:00"
+        },
+        {
+            "name": "uptime/uptime",
+            "version": "0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/marcioAlmada/uptime.git",
+                "reference": "1f5e5b63850c2342e42366c184fc74445fa2d929"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/marcioAlmada/uptime/zipball/1f5e5b63850c2342e42366c184fc74445fa2d929",
+                "reference": "1f5e5b63850c2342e42366c184fc74445fa2d929",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Uptime\\": "src/"
+                },
+                "files": [
+                    "__functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Márcio Almada",
+                    "email": "marcio3w@gmail.com",
+                    "homepage": "https://github.com/marcioAlmada"
+                }
+            ],
+            "description": "Missing php uptime package inspired by python module uptime",
+            "keywords": [
+                "boottime",
+                "system",
+                "uptime"
+            ],
+            "time": "2016-06-29T20:50:18+00:00"
         }
     ],
     "packages-dev": [],

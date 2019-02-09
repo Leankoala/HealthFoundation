@@ -44,7 +44,7 @@ class UptimeCheck implements Check
         $systemStartDate = new \DateTime(date('Y-m-d H:i:s', \uptime()));
         $now = new \DateTime();
 
-        $uptime = $now->diff($systemStartDate);
+        $uptime = $systemStartDate->diff($now);
 
         return $uptime;
     }
@@ -54,7 +54,7 @@ class UptimeCheck implements Check
         $reference = new \DateTimeImmutable;
         $endTime = $reference->add($dateInterval);
 
-        return $reference->getTimestamp() - $endTime->getTimestamp();
+        return $endTime->getTimestamp() - $reference->getTimestamp();
     }
 
     private function dateIntervalToString(\DateInterval $dateInterval)

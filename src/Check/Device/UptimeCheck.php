@@ -7,7 +7,7 @@ use Leankoala\HealthFoundation\Check\Result;
 
 class UptimeCheck implements Check
 {
-    const IDENTIFIER = 'base:device:spaceUsed';
+    const IDENTIFIER = 'base:device:uptime';
 
     /**
      * @var \DateInterval
@@ -36,7 +36,7 @@ class UptimeCheck implements Check
     }
 
     /**
-     * @return bool|\DateInterval
+     * @return \DateInterval
      * @throws \Exception
      */
     private function getUptime()

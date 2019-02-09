@@ -6,7 +6,7 @@ $foundation = new \Leankoala\HealthFoundation\HealthFoundation();
 
 // check uptime
 $uptimeCheck = new \Leankoala\HealthFoundation\Check\Device\UptimeCheck();
-$uptimeCheck->init('-1 days');
+$uptimeCheck->init('1 day');
 
 $foundation->registerCheck($uptimeCheck);
 

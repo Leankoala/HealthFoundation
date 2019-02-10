@@ -28,9 +28,6 @@ class NumberProcessesCheck implements Check
 
         $count = (int)$output[0];
 
-        var_dump($count);
-        var_dump($this->maxNumber);
-
         if ($count > $this->maxNumber) {
             return new Result(Result::STATUS_FAIL, 'Too many processes found "' . $this->processName . '". Current: ' . $count . ' / expected < ' . $this->maxNumber . '.');
         }

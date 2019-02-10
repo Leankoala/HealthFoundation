@@ -68,6 +68,9 @@ As this is an open source project we want everybody to submit their own checks, 
 - Resource
   - HTTP
     - **StatusCode** (galenski@online-verlag-freiburg.de)  
+- System
+  - **Uptime** (nils.langner@leankoala.com)  
+  - **NumberProcesses** (nils.langner@leankoala.com)  
 
 ### Ideas for health checks
 

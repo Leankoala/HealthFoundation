@@ -1,13 +1,13 @@
 <?php
 
-namespace Leankoala\HealthFoundation\Check\Device;
+namespace Leankoala\HealthFoundation\Check\System;
 
 use Leankoala\HealthFoundation\Check\Check;
 use Leankoala\HealthFoundation\Check\Result;
 
 class UptimeCheck implements Check
 {
-    const IDENTIFIER = 'base:device:uptime';
+    const IDENTIFIER = 'base:system:uptime';
 
     /**
      * @var \DateInterval

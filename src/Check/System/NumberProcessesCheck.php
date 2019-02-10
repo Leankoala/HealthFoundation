@@ -29,11 +29,11 @@ class NumberProcessesCheck implements Check
         $count = (int)$output[0];
 
         if ($count > $this->maxNumber) {
-            return new Result(Result::STATUS_FAIL, 'Too many processes found "' . $this->processName . '". Current: ' . $count . ' / expected < ' . $this->maxNumber . '.');
+            return new Result(Result::STATUS_FAIL, 'Too many processes found "' . $this->processName . '" (current: ' . $count . ', expected < ' . $this->maxNumber . '.');
         }
 
         if ($count < $this->minNumber) {
-            return new Result(Result::STATUS_FAIL, 'Too few processes found "' . $this->processName . '". Current: ' . $count . ' / expected > ' . $this->maxNumber . '.');
+            return new Result(Result::STATUS_FAIL, 'Too few processes found "' . $this->processName . '" (current: ' . $count . ' , expected > ' . $this->maxNumber . '.');
         }
 
         return new Result(Result::STATUS_PASS, 'Number of processes "' . $this->processName . '" was within limits. Current number is ' . $count . '.');

@@ -37,22 +37,26 @@ class HealthFoundation
         return $this->httpClient;
     }
 
-    public function registerCheck(Check $check, $failOnFail = true)
+    public function registerCheck(Check $check, $identifier = false)
     {
         if ($check instanceof HttpClientAwareCheck) {
             $check->setHttpClient($this->getHttpClient());
         }
-        $this->registeredChecks[] = $check;
+
+        if ($identifier) {
+            $this->registeredChecks[$identifier] = $check;
+        } else {
+            $this->registeredChecks[] = $check;
+        }
     }
 
     public function runHealthCheck()
     {
         $runResult = new RunResult();
 
-        foreach ($this->registeredChecks as $check) {
-
+        foreach ($this->registeredChecks as $identifier => $check) {
             $checkResult = $check->run();
-            $runResult->addResult($check, $checkResult);
+            $runResult->addResult($check, $checkResult, $identifier);
         }
 
         return $runResult;

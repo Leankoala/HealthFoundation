@@ -6,6 +6,7 @@ $foundation = new \Leankoala\HealthFoundation\HealthFoundation();
 
 $numberOfLinesCheck = new \Leankoala\HealthFoundation\Check\Files\Content\NumberOfLinesCheck();
 $numberOfLinesCheck->init('composer.lock', 15, \Leankoala\HealthFoundation\Check\Files\Content\NumberOfLinesCheck::RELATION_MIN, ['test', '234']);
+$numberOfLinesCheck->setIdentifier('lines_in_composer_lock');
 
 $foundation->registerCheck($numberOfLinesCheck);
 

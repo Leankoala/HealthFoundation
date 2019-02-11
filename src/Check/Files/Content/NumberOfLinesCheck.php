@@ -2,12 +2,12 @@
 
 namespace Leankoala\HealthFoundation\Check\Files\Content;
 
-use Leankoala\HealthFoundation\Check\Check;
+use Leankoala\HealthFoundation\Check\BasicCheck;
 use Leankoala\HealthFoundation\Check\Result;
 
-class NumberOfLinesCheck implements Check
+class NumberOfLinesCheck extends BasicCheck
 {
-    const IDENTIFIER = 'base:files:content:numberOfLines';
+    protected $identifier = 'base:files:content:numberOfLines';
 
     private $file;
 
@@ -62,8 +62,8 @@ class NumberOfLinesCheck implements Check
         $this->limit = $limit;
     }
 
-    public function getIdentifier()
+    protected function getCheckIdentifier()
     {
-        return self::IDENTIFIER . '.' . md5($this->file . serialize($this->pattern));
+        return $this->identifier . '.' . md5($this->file . serialize($this->pattern));
     }
 }

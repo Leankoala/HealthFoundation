@@ -26,13 +26,15 @@ class NumberOfLinesCheck implements Check
             return new Result(Result::STATUS_FAIL, 'Unable to get document length because file does not exist.');
         }
 
+        $grep = '';
         if ($this->pattern) {
-            $grep = ' | grep "' . $this->pattern . '"';
-        } else {
-            $grep = '';
+            foreach ($this->pattern as $pattern) {
+                $grep .= ' | grep "' . $pattern . '"';
+            }
         }
-        $command = 'cat ' . $this->file . $grep . ' | wc -l';
 
+        $command = 'cat ' . $this->file . $grep . ' | wc -l';
+        
         exec($command, $output, $return);
 
         $numberLines = (int)$output[0];
@@ -55,7 +57,7 @@ class NumberOfLinesCheck implements Check
     public function init($file, $limit, $relation = self::RELATION_MAX, $pattern = null)
     {
         $this->file = $file;
-        $this->pattern = $pattern;
+        $this->pattern = (array)$pattern;
         $this->relation = $relation;
         $this->limit = $limit;
     }

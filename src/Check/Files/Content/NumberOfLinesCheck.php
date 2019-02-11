@@ -34,7 +34,7 @@ class NumberOfLinesCheck implements Check
         }
 
         $command = 'cat ' . $this->file . $grep . ' | wc -l';
-        
+
         exec($command, $output, $return);
 
         $numberLines = (int)$output[0];
@@ -64,6 +64,6 @@ class NumberOfLinesCheck implements Check
 
     public function getIdentifier()
     {
-        return self::IDENTIFIER;
+        return self::IDENTIFIER . '.' . md5($this->file . serialize($this->pattern));
     }
 }

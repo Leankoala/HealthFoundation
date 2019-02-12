@@ -40,6 +40,7 @@ class IetfFormat implements Format
             /** @var Check $check */
             $check = $resultArray['check'];
 
+
             if (is_string($resultArray['identifier'])) {
                 $identifier = $resultArray['identifier'];
             } else {
@@ -50,6 +51,11 @@ class IetfFormat implements Format
                 'status' => $result->getStatus(),
                 'output' => $result->getMessage()
             ];
+
+            $description = $resultArray['description'];
+            if ($description) {
+                $details[$identifier]['description'] = $description;
+            }
         }
 
         $resultArray = [

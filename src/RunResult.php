@@ -14,9 +14,9 @@ class RunResult
 
     private $globalStatus = Result::STATUS_PASS;
 
-    public function addResult(Check $check, Result $result, $identifier = false)
+    public function addResult(Check $check, Result $result, $identifier = false, $description = "")
     {
-        $this->singleResults[] = ['check' => $check, 'result' => $result, 'identifier' => $identifier];
+        $this->singleResults[] = ['check' => $check, 'result' => $result, 'identifier' => $identifier, 'description' => $description];
 
         $this->globalStatus = Result::getHigherWeightedStatus($this->globalStatus, $result->getStatus());
     }

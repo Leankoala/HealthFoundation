@@ -37,16 +37,16 @@ class HealthFoundation
         return $this->httpClient;
     }
 
-    public function registerCheck(Check $check, $identifier = false)
+    public function registerCheck(Check $check, $identifier = false, $description = "")
     {
         if ($check instanceof HttpClientAwareCheck) {
             $check->setHttpClient($this->getHttpClient());
         }
 
         if ($identifier) {
-            $this->registeredChecks[$identifier] = $check;
+            $this->registeredChecks[$identifier] = ['check' => $check, 'description' => $description];
         } else {
-            $this->registeredChecks[] = $check;
+            $this->registeredChecks[] = ['check' => $check, 'description' => $description];
         }
     }
 
@@ -54,9 +54,12 @@ class HealthFoundation
     {
         $runResult = new RunResult();
 
-        foreach ($this->registeredChecks as $identifier => $check) {
+        foreach ($this->registeredChecks as $identifier => $checkInfos) {
+            /** @var Check $check */
+            $check = $checkInfos['check'];
+
             $checkResult = $check->run();
-            $runResult->addResult($check, $checkResult, $identifier);
+            $runResult->addResult($check, $checkResult, $identifier, $checkInfos['description']);
         }
 
         return $runResult;

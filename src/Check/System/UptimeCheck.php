@@ -26,12 +26,17 @@ class UptimeCheck implements Check
      */
     public function run()
     {
-        $uptime = $this->getUptime();
+        try {
 
-        if ($this->dateIntervalToSeconds($uptime) > $this->dateIntervalToSeconds($this->dateInterval)) {
-            return new Result(Result::STATUS_FAIL, 'Servers uptime is too high (' . $this->dateIntervalToString($uptime) . ')');
-        } else {
-            return new Result(Result::STATUS_PASS, 'Servers uptime is ok (' . $this->dateIntervalToString($uptime) . ')');
+            $uptime = $this->getUptime();
+            if ($this->dateIntervalToSeconds($uptime) > $this->dateIntervalToSeconds($this->dateInterval)) {
+                return new Result(Result::STATUS_FAIL, 'Servers uptime is too high (' . $this->dateIntervalToString($uptime) . ')');
+            } else {
+                return new Result(Result::STATUS_PASS, 'Servers uptime is ok (' . $this->dateIntervalToString($uptime) . ')');
+            }
+
+        } catch (\Exception $e) {
+            return new Result(Result::STATUS_FAIL, 'Error: ' . $e->getMessage());
         }
     }
 
@@ -41,7 +46,13 @@ class UptimeCheck implements Check
      */
     private function getUptime()
     {
-        $systemStartDate = new \DateTime(date('Y-m-d H:i:s', \uptime()));
+        $uptime = \uptime();
+
+        if ($uptime === false) {
+            throw new \Exception('Uptime() cannot be calculated.');
+        }
+
+        $systemStartDate = new \DateTime(date('Y-m-d H:i:s', $uptime));
         $now = new \DateTime();
 
         $uptime = $systemStartDate->diff($now);
@@ -49,6 +60,11 @@ class UptimeCheck implements Check
         return $uptime;
     }
 
+    /**
+     * @param \DateInterval $dateInterval
+     * @return int
+     * @throws \Exception
+     */
     private function dateIntervalToSeconds(\DateInterval $dateInterval)
     {
         $reference = new \DateTimeImmutable;

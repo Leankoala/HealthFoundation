@@ -5,7 +5,7 @@ include_once __DIR__ . '/../vendor/autoload.php';
 $foundation = new \Leankoala\HealthFoundation\HealthFoundation();
 
 // check uptime
-$uptimeCheck = new \Leankoala\HealthFoundation\Check\Device\UptimeCheck();
+$uptimeCheck = new \Leankoala\HealthFoundation\Check\System\UptimeCheck();
 $uptimeCheck->init('1 day');
 
 $foundation->registerCheck($uptimeCheck);

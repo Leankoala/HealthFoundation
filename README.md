@@ -12,6 +12,34 @@ HealthFoundation was designed to be run standalone or within any project.
 
 ### Example
 
+#### Config
+
+This example checks if the disc space is used is less than 95 percent.
+
+```yml
+# health.yml
+
+foundation:
+  messages:
+    succes: "Storage server is up and running."
+    failure: "Some problems occurred on storage server."
+
+format:
+  class: Leankoala\HealthFoundation\Result\Format\Ietf\IetfFormat
+
+checks:
+  spaceUsed:
+    check: Leankoala\HealthFoundation\Check\Device\SpaceUsedCheck
+    identifier: space_used_check
+    description: 'Space used on storage server'
+    parameters:
+      maxUsageInPercent: 95
+```
+
+#### Code
+
+The same check as code
+
 ```php
 # health.php
 
@@ -92,7 +120,6 @@ As this is an open source project we want everybody to submit their own checks, 
     
 ## Outlook / Ideas
 
-- **Config files** - it should be possible to configure the health check without writing a line of code
 - **Suggestions** - the tool should find on its own what can be tested
 - **Plugins** - It would be great if there where plugins/bundles for WordPress, Shopware, Symfony etc.    
 

@@ -1,0 +1,18 @@
+foundation:
+  messages:
+    failure: "Composer.lock does not have enough numbers of lines"
+    succes: "Composer.lock has enough numbers of lines"
+
+format:
+  class: Leankoala\HealthFoundation\Result\Format\Ietf\IetfFormat
+
+checks:
+  fileNumberOfLines:
+    check: Leankoala\HealthFoundation\Check\Files\Content\NumberOfLinesCheck
+    identifier: composer_length
+    description: 'Number of lines in the composer.lock file'
+    parameters:
+      file: composer.lock
+      limit: 10
+      relation: min
+      pattern: 2019

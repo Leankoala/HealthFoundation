@@ -8,7 +8,7 @@ $foundation = new \Leankoala\HealthFoundation\HealthFoundation();
 $spaceUsedCheck = new \Leankoala\HealthFoundation\Check\Device\SpaceUsedCheck();
 $spaceUsedCheck->init(95);
 
-$foundation->registerCheck($spaceUsedCheck);
+$foundation->registerCheck($spaceUsedCheck, 'space_used_check', '\Space used on storage server');
 
 $runResult = $foundation->runHealthCheck();
 

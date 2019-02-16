@@ -1,7 +1,7 @@
 foundation:
   messages:
     failure: "Composer.lock does not have enough numbers of lines"
-    succes: "Composer.lock has enough numbers of lines"
+    success: "Composer.lock has enough numbers of lines"
 
 format:
   class: Leankoala\HealthFoundation\Result\Format\Ietf\IetfFormat

@@ -21,7 +21,7 @@ This example checks if the disc space is used is less than 95 percent.
 
 foundation:
   messages:
-    succes: "Storage server is up and running."
+    success: "Storage server is up and running."
     failure: "Some problems occurred on storage server."
 
 format:
@@ -51,7 +51,10 @@ $foundation = new \Leankoala\HealthFoundation\HealthFoundation();
 $spaceUsedCheck = new \Leankoala\HealthFoundation\Check\Device\SpaceUsedCheck();
 $spaceUsedCheck->init(95);
 
-$foundation->registerCheck($spaceUsedCheck);
+$foundation->registerCheck(
+    $spaceUsedCheck, 
+    'space_used_check', 
+    'Space used on storage server');
 
 $runResult = $foundation->runHealthCheck();
 

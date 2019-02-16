@@ -9,15 +9,29 @@ use Leankoala\HealthFoundation\RunResult;
 
 class IetfFormat implements Format
 {
-    const DEFAULT_OUTPUT_PASS = 'Passed.';
+    const DEFAULT_OUTPUT_PASS = 'The health check was passed.';
     const DEFAULT_OUTPUT_WARN = 'Warning.';
-    const DEFAULT_OUTPUT_FAIL = 'Failed.';
+    const DEFAULT_OUTPUT_FAIL = 'The health check failed.';
 
-    public function handle(RunResult $runResult, $passMessage = null, $failMessage = null)
+    private $passMessage = self::DEFAULT_OUTPUT_PASS;
+    private $failMessage = self::DEFAULT_OUTPUT_FAIL;
+
+    public function __construct($passMessage = null, $failMessage = null)
+    {
+        if ($passMessage) {
+            $this->passMessage = $passMessage;
+        }
+
+        if ($failMessage) {
+            $this->failMessage = $failMessage;
+        }
+    }
+
+    public function handle(RunResult $runResult)
     {
         header('Content-Type: application/json');
 
-        $output = $this->getOutput($runResult, $passMessage, $failMessage);
+        $output = $this->getOutput($runResult, $this->passMessage, $this->failMessage);
 
         $details = [];
 

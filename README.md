@@ -23,13 +23,11 @@ $ php bin/health.php run health.yml
 The config file ```health.yml``` could look like this
 
 ```yml
-foundation:
-  messages:
-    success: "Storage server is up and running."
-    failure: "Some problems occurred on storage server."
-
 format:
   class: Leankoala\HealthFoundation\Result\Format\Ietf\IetfFormat
+  parameters:
+    passedMessage: "Storage server is up and running."
+    failureMessage: "Some problems occurred on storage server."
 
 checks:
   spaceUsed:
@@ -39,6 +37,8 @@ checks:
     parameters:
       maxUsageInPercent: 95
 ```
+
+For more information on how to use this have a look at the `RunCommand`. 
 
 #### Code
 

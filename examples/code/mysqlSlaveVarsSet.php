@@ -18,5 +18,9 @@ $foundation->registerCheck($slaveChecSqlkRunning);
 
 $runResult = $foundation->runHealthCheck();
 
-$formatter = new \Leankoala\HealthFoundation\Result\Format\Ietf\IetfFormat();
-$formatter->handle($runResult, 'Mysql slave server is up and running.', 'Some problems occurred for mysql slave server.');
+$formatter = new \Leankoala\HealthFoundation\Result\Format\Ietf\IetfFormat(
+    'Mysql slave server is up and running.',
+    'Some problems occurred for mysql slave server.'
+);
+
+$formatter->handle($runResult);

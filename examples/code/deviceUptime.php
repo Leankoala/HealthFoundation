@@ -12,5 +12,8 @@ $foundation->registerCheck($uptimeCheck);
 
 $runResult = $foundation->runHealthCheck();
 
-$formatter = new \Leankoala\HealthFoundation\Result\Format\Ietf\IetfFormat();
-$formatter->handle($runResult, 'Http resource status as expected', 'Http resource status is different or got errors');
+$formatter = new \Leankoala\HealthFoundation\Result\Format\Ietf\IetfFormat(
+    'Http resource status as expected',
+    'Http resource status is different or got errors');
+
+$formatter->handle($runResult);

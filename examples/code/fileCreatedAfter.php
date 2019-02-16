@@ -12,5 +12,9 @@ $foundation->registerCheck($fileCreatedAfterCheck);
 
 $runResult = $foundation->runHealthCheck();
 
-$formatter = new \Leankoala\HealthFoundation\Result\Format\Ietf\IetfFormat();
-$formatter->handle($runResult, 'Backup file was created successfully.', 'Seems like the backup script does not create new archives.');
+$formatter = new \Leankoala\HealthFoundation\Result\Format\Ietf\IetfFormat(
+    'Backup file was created successfully.',
+    'Seems like the backup script does not create new archives.'
+);
+
+$formatter->handle($runResult);

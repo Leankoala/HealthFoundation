@@ -12,5 +12,9 @@ $foundation->registerCheck($spaceUsedCheck, 'space_used_check', '\Space used on 
 
 $runResult = $foundation->runHealthCheck();
 
-$formatter = new \Leankoala\HealthFoundation\Result\Format\Ietf\IetfFormat();
-$formatter->handle($runResult, 'Storage server is up and running.', 'Some problems occurred on storage server.');
+$formatter = new \Leankoala\HealthFoundation\Result\Format\Ietf\IetfFormat(
+    'Storage server is up and running.',
+    'Some problems occurred on storage server.'
+);
+
+$formatter->handle($runResult);

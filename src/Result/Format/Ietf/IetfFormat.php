@@ -17,19 +17,7 @@ class IetfFormat implements Format
     {
         header('Content-Type: application/json');
 
-        if ($runResult->getStatus() == Result::STATUS_PASS) {
-            if (is_null($passMessage)) {
-                $output = self::DEFAULT_OUTPUT_PASS;
-            } else {
-                $output = $passMessage;
-            }
-        } else {
-            if (is_null($failMessage)) {
-                $output = self::DEFAULT_OUTPUT_FAIL;
-            } else {
-                $output = $failMessage;
-            }
-        }
+        $output = $this->getOutput($runResult, $passMessage, $failMessage);
 
         $details = [];
 
@@ -65,5 +53,24 @@ class IetfFormat implements Format
         ];
 
         echo json_encode($resultArray, JSON_PRETTY_PRINT);
+    }
+
+    private function getOutput(RunResult $runResult, $passMessage = null, $failMessage = null)
+    {
+        if ($runResult->getStatus() == Result::STATUS_PASS) {
+            if (is_null($passMessage)) {
+                $output = self::DEFAULT_OUTPUT_PASS;
+            } else {
+                $output = $passMessage;
+            }
+        } else {
+            if (is_null($failMessage)) {
+                $output = self::DEFAULT_OUTPUT_FAIL;
+            } else {
+                $output = $failMessage;
+            }
+        }
+
+        return $output;
     }
 }

@@ -26,6 +26,16 @@ class NumberOfLinesCheck extends BasicCheck
             return new Result(Result::STATUS_FAIL, 'Unable to get document length because file does not exist.');
         }
 
+        $numberLines = $this->getNumberOfLines();
+
+        return $this->processData($numberLines);
+    }
+
+    /**
+     * @return int
+     */
+    private function getNumberOfLines()
+    {
         $grep = '';
         if ($this->pattern) {
             foreach ($this->pattern as $pattern) {
@@ -37,8 +47,15 @@ class NumberOfLinesCheck extends BasicCheck
 
         exec($command, $output, $return);
 
-        $numberLines = (int)$output[0];
+        return (int)$output[0];
+    }
 
+    /**
+     * @param $numberLines
+     * @return Result
+     */
+    private function processData($numberLines)
+    {
         if ($this->relation === self::RELATION_MAX) {
             if ($numberLines > $this->limit) {
                 return new Result(Result::STATUS_FAIL, 'The document contains too many lines (' . $numberLines . '). Expected where ' . $this->limit . ' at the most.');

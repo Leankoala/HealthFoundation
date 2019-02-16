@@ -12,9 +12,15 @@ HealthFoundation was designed to be run standalone or within any project.
 
 ### Example
 
-#### Config
+#### Config file
 
-This example checks if the disc space is used is less than 95 percent.
+This example checks if the disc space is used is less than 95 percent. 
+
+```bash
+$ php bin/health run health.yml
+```
+
+The config file could look like this
 
 ```yml
 # health.yml

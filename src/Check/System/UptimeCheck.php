@@ -27,14 +27,12 @@ class UptimeCheck implements Check
     public function run()
     {
         try {
-
             $uptime = $this->getUptime();
             if ($this->dateIntervalToSeconds($uptime) > $this->dateIntervalToSeconds($this->dateInterval)) {
                 return new Result(Result::STATUS_FAIL, 'Servers uptime is too high (' . $this->dateIntervalToString($uptime) . ')');
             } else {
                 return new Result(Result::STATUS_PASS, 'Servers uptime is ok (' . $this->dateIntervalToString($uptime) . ')');
             }
-
         } catch (\Exception $e) {
             return new Result(Result::STATUS_FAIL, 'Error: ' . $e->getMessage());
         }

@@ -20,11 +20,9 @@ This example checks if the disc space is used is less than 95 percent.
 $ php bin/health.php run health.yml
 ```
 
-The config file could look like this
+The config file ```health.yml``` could look like this
 
 ```yml
-# health.yml
-
 foundation:
   messages:
     success: "Storage server is up and running."

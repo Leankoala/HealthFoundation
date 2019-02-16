@@ -28,6 +28,7 @@ class RunCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        /** @var string $configFile */
         $configFile = $input->getArgument('config');
 
         if (!file_exists($configFile)) {

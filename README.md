@@ -130,4 +130,5 @@ As this is an open source project we want everybody to submit their own checks, 
 
 - **Suggestions** - the tool should find on its own what can be tested
 - **Plugins** - It would be great if there where plugins/bundles for WordPress, Shopware, Symfony etc.    
-
+- **History** - Remember the last health status
+- **Action** - Do something after a health check fails**

@@ -46,16 +46,16 @@ class UptimeCheck implements Check
      */
     private function getUptime()
     {
-        $uptime = \uptime();
+        $uptimeTimestamp = \uptime();
 
-        if ($uptime === false) {
-            throw new \Exception('Uptime() cannot be calculated.');
-        }
-
-        $systemStartDate = new \DateTime(date('Y-m-d H:i:s', $uptime));
+        $systemStartDate = new \DateTime(date('Y-m-d H:i:s', (int)$uptimeTimestamp));
         $now = new \DateTime();
 
         $uptime = $systemStartDate->diff($now);
+
+        if ($uptime === false) {
+            throw new \RuntimeException('Uptime cannot be calculated.');
+        }
 
         return $uptime;
     }

@@ -1,0 +1,18 @@
+format:
+  class: Leankoala\HealthFoundation\Result\Format\Ietf\IetfFormat
+  parameters:
+    passedMessage: "Composer.lock has enough numbers of lines"
+    failureMessage: "Composer.lock does not have enough numbers of lines"
+
+checks:
+  dockerContainerRunning:
+    check: Leankoala\HealthFoundation\Check\Docker\Container\ContainerIsRunningCheck
+    description: 'Is the Graphite Docker container running'
+    parameters:
+      containerName: graphitedocker_graphite_1
+
+  dockerContainerNotRunning:
+    check: Leankoala\HealthFoundation\Check\Docker\Container\ContainerIsRunningCheck
+    description: 'Is the Graphite Docker container running'
+    parameters:
+      containerName: graphitedocker_graphite_1w

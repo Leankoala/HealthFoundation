@@ -97,6 +97,9 @@ As this is an open source project we want everybody to submit their own checks, 
 - Device  
   - **SpaceUsed** (nils.langner@leankoala.com)
   - **Uptime** (nils.langner@leankoala.com)
+- Docker
+  - Container
+    - **ContainerIsRunningCheck** (nils.langner@leankoala.com)
 - Files
   - Content
     - **NumberOfLines** (nils.langner@leankoala.com)

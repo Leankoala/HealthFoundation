@@ -3,6 +3,7 @@
 namespace Leankoala\HealthFoundation\Check\Device;
 
 use Leankoala\HealthFoundation\Check\Check;
+use Leankoala\HealthFoundation\Check\MetricAwareResult;
 use Leankoala\HealthFoundation\Check\Result;
 
 class SpaceUsedCheck implements Check
@@ -29,10 +30,14 @@ class SpaceUsedCheck implements Check
         $usage = 100 - round(($free / $total) * 100);
 
         if ($usage > $this->maxUsageInPercent) {
-            return new Result(Result::STATUS_FAIL, 'No space left on device. ' . $usage . '% used.');
+            $result = new MetricAwareResult(Result::STATUS_FAIL, 'No space left on device. ' . $usage . '% used.');
         } else {
-            return new Result(Result::STATUS_PASS, 'Enough space left on device. ' . $usage . '% used.');
+            $result = new MetricAwareResult(Result::STATUS_PASS, 'Enough space left on device. ' . $usage . '% used.');
         }
+
+        $result->setMetric($usage, 'percent');
+
+        return $result;
     }
 
     public function getIdentifier()

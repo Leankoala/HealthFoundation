@@ -41,7 +41,7 @@ class HealthFoundation
 
 
     /**
-     * Return the current memory abstraction if set otherwise create one.
+     * Return the current cache abstraction
      *
      * @return Cache
      */

@@ -3,6 +3,7 @@
 namespace Leankoala\HealthFoundation\Result\Format\Ietf;
 
 use Leankoala\HealthFoundation\Check\Check;
+use Leankoala\HealthFoundation\Check\MetricAwareResult;
 use Leankoala\HealthFoundation\Check\Result;
 use Leankoala\HealthFoundation\Result\Format\Format;
 use Leankoala\HealthFoundation\RunResult;
@@ -57,6 +58,11 @@ class IetfFormat implements Format
             $description = $resultArray['description'];
             if ($description) {
                 $details[$identifier]['description'] = $description;
+            }
+
+            if ($result instanceof MetricAwareResult) {
+                $details[$identifier]["observedValue"] = $result->getMetricValue();
+                $details[$identifier]["observedUnit"] = $result->getMetricUnit();
             }
         }
 

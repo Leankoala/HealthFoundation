@@ -26,9 +26,9 @@ class ContainerIsRunningCheck implements Check
         $isRunning = ((bool)$output[0]);
 
         if ($isRunning) {
-            return new Result(Result::STATUS_PASS, 'The container ' . $this->containerName . ' is running.');
+            return new Result(Result::STATUS_PASS, 'The docker container ' . $this->containerName . ' is running.');
         } else {
-            return new Result(Result::STATUS_FAIL, 'The container ' . $this->containerName . ' is not running.');
+            return new Result(Result::STATUS_FAIL, 'The docker container ' . $this->containerName . ' is not running.');
         }
     }
 

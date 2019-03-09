@@ -3,6 +3,7 @@
 namespace Leankoala\HealthFoundation\Check\Files\Content;
 
 use Leankoala\HealthFoundation\Check\BasicCheck;
+use Leankoala\HealthFoundation\Check\MetricAwareResult;
 use Leankoala\HealthFoundation\Check\Result;
 
 class NumberOfLinesCheck extends BasicCheck
@@ -58,17 +59,21 @@ class NumberOfLinesCheck extends BasicCheck
     {
         if ($this->relation === self::RELATION_MAX) {
             if ($numberLines > $this->limit) {
-                return new Result(Result::STATUS_FAIL, 'The document contains too many lines (' . $numberLines . '). Expected where ' . $this->limit . ' at the most.');
+                $result = new MetricAwareResult(Result::STATUS_FAIL, 'The document contains too many lines (' . $numberLines . '). Expected where ' . $this->limit . ' at the most.');
             } else {
-                return new Result(Result::STATUS_PASS, 'The document contains ' . $numberLines . ' lines. Expected where ' . $this->limit . ' at the most.');
+                $result = new MetricAwareResult(Result::STATUS_PASS, 'The document contains ' . $numberLines . ' lines. Expected where ' . $this->limit . ' at the most.');
             }
         } else {
             if ($numberLines < $this->limit) {
-                return new Result(Result::STATUS_FAIL, 'The document contains too few lines (' . $numberLines . '). Expected where ' . $this->limit . ' at least.');
+                $result = new MetricAwareResult(Result::STATUS_FAIL, 'The document contains too few lines (' . $numberLines . '). Expected where ' . $this->limit . ' at least.');
             } else {
-                return new Result(Result::STATUS_PASS, 'The document contains ' . $numberLines . ' lines. Expected where ' . $this->limit . ' at least.');
+                $result = new MetricAwareResult(Result::STATUS_PASS, 'The document contains ' . $numberLines . ' lines. Expected where ' . $this->limit . ' at least.');
             }
         }
+
+        $result->setMetric($numberLines, 'lines');
+
+        return $result;
     }
 
     public function init($file, $limit, $relation = self::RELATION_MAX, $pattern = null)

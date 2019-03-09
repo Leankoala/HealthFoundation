@@ -5,6 +5,8 @@ namespace Leankoala\HealthFoundation;
 use GuzzleHttp\Client;
 use Leankoala\HealthFoundation\Check\Check;
 use Leankoala\HealthFoundation\Check\HttpClientAwareCheck;
+use Leankoala\HealthFoundation\Check\CacheAwareCheck;
+use Leankoala\HealthFoundation\Extenstion\Cache\Cache;
 
 class HealthFoundation
 {
@@ -37,10 +39,25 @@ class HealthFoundation
         return $this->httpClient;
     }
 
+
+    /**
+     * Return the current memory abstraction if set otherwise create one.
+     *
+     * @return Cache
+     */
+    private function getCache(CacheAwareCheck $check)
+    {
+        return new Cache($check->getIdentifier());
+    }
+
     public function registerCheck(Check $check, $identifier = false, $description = "")
     {
         if ($check instanceof HttpClientAwareCheck) {
             $check->setHttpClient($this->getHttpClient());
+        }
+
+        if ($check instanceof CacheAwareCheck) {
+            $check->setCache($this->getCache($check));
         }
 
         if ($identifier) {

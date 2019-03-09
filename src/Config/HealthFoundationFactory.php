@@ -3,6 +3,7 @@
 namespace Leankoala\HealthFoundation\Config;
 
 use Leankoala\HealthFoundation\Check\Check;
+use Leankoala\HealthFoundation\Decorator\Decorator;
 use Leankoala\HealthFoundation\HealthFoundation;
 use PhmLabs\Components\Init\Init;
 
@@ -43,6 +44,19 @@ class HealthFoundationFactory
                 $identifier = $checkArray['identifier'];
             } else {
                 $identifier = $key;
+            }
+
+            if (array_key_exists('decorators', $checkArray)) {
+                foreach ($checkArray['decorators'] as $decorator) {
+                    $decorator = Init::initialize($decorator, 'decorator');
+
+                    if ($decorator instanceof Decorator) {
+                        $decorator->setCheck($check);
+                        $check = $decorator;
+                    } else {
+                        throw new \RuntimeException('The given decorator must implement the decorator interface.');
+                    }
+                }
             }
 
             $healthFoundation->registerCheck($check, $identifier, $description);

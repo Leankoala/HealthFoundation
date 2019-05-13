@@ -22,7 +22,7 @@ class NumberProcessesCheck implements Check
 
     public function run()
     {
-        $command = 'ps aux | grep ' . $this->processName . ' | wc -l';
+        $command = 'ps aux | grep -a  "' . $this->processName . '" | wc -l';
 
         exec($command, $output);
 

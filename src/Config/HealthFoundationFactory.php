@@ -3,7 +3,7 @@
 namespace Leankoala\HealthFoundation\Config;
 
 use Leankoala\HealthFoundation\Check\Check;
-use Leankoala\HealthFoundation\Decorator\Decorator;
+use Leankoala\HealthFoundation\Filter\Filter;
 use Leankoala\HealthFoundation\HealthFoundation;
 use PhmLabs\Components\Init\Init;
 
@@ -50,7 +50,7 @@ class HealthFoundationFactory
                 foreach ($checkArray['decorators'] as $decorator) {
                     $decorator = Init::initialize($decorator, 'decorator');
 
-                    if ($decorator instanceof Decorator) {
+                    if ($decorator instanceof Filter) {
                         $decorator->setCheck($check);
                         $check = $decorator;
                     } else {

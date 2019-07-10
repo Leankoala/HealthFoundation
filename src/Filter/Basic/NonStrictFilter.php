@@ -1,14 +1,14 @@
 <?php
 
-namespace Leankoala\HealthFoundation\Decorator\Basic;
+namespace Leankoala\HealthFoundation\Filter\Basic;
 
 use Leankoala\HealthFoundation\Check\CacheAwareCheck;
 use Leankoala\HealthFoundation\Check\MetricAwareResult;
 use Leankoala\HealthFoundation\Check\Result;
-use Leankoala\HealthFoundation\Decorator\BasicDecorator;
+use Leankoala\HealthFoundation\Filter\BasicFilter;
 use Leankoala\HealthFoundation\Extenstion\Cache\Cache;
 
-class NonStrictDecorator extends BasicDecorator implements CacheAwareCheck
+class NonStrictFilter extends BasicFilter implements CacheAwareCheck
 {
     private $maxErrorsInARow = 2;
 

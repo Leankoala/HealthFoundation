@@ -6,7 +6,7 @@ $foundation = new \Leankoala\HealthFoundation\HealthFoundation();
 
 $staticCheck = new \Leankoala\HealthFoundation\test\Check\StaticStatusCheck();
 
-$nonStrictStaticCheck = new \Leankoala\HealthFoundation\Decorator\Basic\NonStrictDecorator();
+$nonStrictStaticCheck = new \Leankoala\HealthFoundation\Filter\Basic\NonStrictFilter();
 $nonStrictStaticCheck->setCheck($staticCheck);
 
 $foundation->registerCheck($nonStrictStaticCheck, null, 'Test non-strict mode for static check.');

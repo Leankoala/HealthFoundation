@@ -1,10 +1,10 @@
 <?php
 
-namespace Leankoala\HealthFoundation\Decorator;
+namespace Leankoala\HealthFoundation\Filter;
 
 use Leankoala\HealthFoundation\Check\Check;
 
-interface Decorator extends Check
+interface Filter extends Check
 {
     public function setCheck(Check $check);
 }

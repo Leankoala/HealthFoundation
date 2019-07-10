@@ -1,10 +1,10 @@
 <?php
 
-namespace Leankoala\HealthFoundation\Decorator;
+namespace Leankoala\HealthFoundation\Filter;
 
 use Leankoala\HealthFoundation\Check\Check;
 
-abstract class BasicDecorator implements Decorator
+abstract class BasicFilter implements Filter
 {
     /**
      * @var Check

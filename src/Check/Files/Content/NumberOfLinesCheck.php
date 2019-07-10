@@ -40,7 +40,7 @@ class NumberOfLinesCheck extends BasicCheck
         $grep = '';
         if ($this->pattern) {
             foreach ($this->pattern as $pattern) {
-                $grep .= ' | grep -a    "' . $pattern . '"';
+                $grep .= ' | grep -a  "' . $pattern . '"';
             }
         }
 

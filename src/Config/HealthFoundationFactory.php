@@ -46,9 +46,9 @@ class HealthFoundationFactory
                 $identifier = $key;
             }
 
-            if (array_key_exists('decorators', $checkArray)) {
-                foreach ($checkArray['decorators'] as $decorator) {
-                    $decorator = Init::initialize($decorator, 'decorator');
+            if (array_key_exists('filter', $checkArray)) {
+                foreach ($checkArray['filter'] as $decorator) {
+                    $decorator = Init::initialize($decorator, 'filter');
 
                     if ($decorator instanceof Filter) {
                         $decorator->setCheck($check);

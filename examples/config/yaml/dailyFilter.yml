@@ -1,0 +1,17 @@
+format:
+  class: Leankoala\HealthFoundation\Result\Format\Ietf\IetfFormat
+  parameters:
+    passedMessage: "Composer.lock has enough numbers of lines"
+    failureMessage: "Composer.lock does not have enough numbers of lines"
+
+checks:
+  dockerContainerRunning:
+    check: Leankoala\HealthFoundation\Check\Basic\Fixed\FailureCheck
+    description: 'Always fail. But should be filtered'
+    parameters:
+      containerName: graphitedocker_graphite_1
+    filter:
+      nonStrict:
+        filter: Leankoala\HealthFoundation\Filter\Time\DailyFilter
+        parameters:
+          hour: 6

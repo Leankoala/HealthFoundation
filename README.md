@@ -104,6 +104,7 @@ As this is an open source project we want everybody to submit their own checks, 
   - Content
     - **NumberOfLines** (nils.langner@leankoala.com)
   - **FileCreatedAfter** (nils.langner@leankoala.com)  
+  - **FileExists** (nils.langner@leankoala.com)
 - Resource
   - HTTP
     - **StatusCode** (galenski@online-verlag-freiburg.de)  
@@ -134,4 +135,4 @@ As this is an open source project we want everybody to submit their own checks, 
 - **Suggestions** - the tool should find on its own what can be tested
 - **Plugins** - It would be great if there where plugins/bundles for WordPress, Shopware, Symfony etc.    
 - **History** - Remember the last health status
-- **Action** - Do something after a health check fails**
+- **Action** - Do something after a health check fails

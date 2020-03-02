@@ -12,9 +12,12 @@ class SpaceUsedCheck implements Check
 
     private $maxUsageInPercent = 95;
 
-    public function init($maxUsageInPercent)
+    private $directory = '/';
+
+    public function init($maxUsageInPercent, $directory = '/')
     {
         $this->maxUsageInPercent = $maxUsageInPercent;
+        $this->directory = $directory;
     }
 
     /**
@@ -24,15 +27,15 @@ class SpaceUsedCheck implements Check
      */
     public function run()
     {
-        $free = disk_free_space('/');
-        $total = disk_total_space('/');
+        $free = disk_free_space($this->directory);
+        $total = disk_total_space($this->directory);
 
         $usage = 100 - round(($free / $total) * 100);
 
         if ($usage > $this->maxUsageInPercent) {
-            $result = new MetricAwareResult(Result::STATUS_FAIL, 'No space left on device. ' . $usage . '% used.');
+            $result = new MetricAwareResult(Result::STATUS_FAIL, 'No space left on device. ' . $usage . '% used (' . $this->directory . ').');
         } else {
-            $result = new MetricAwareResult(Result::STATUS_PASS, 'Enough space left on device. ' . $usage . '% used.');
+            $result = new MetricAwareResult(Result::STATUS_PASS, 'Enough space left on device. ' . $usage . '% used (' . $this->directory . ').');
         }
 
         $result->setMetric($usage, 'percent');

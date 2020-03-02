@@ -11,6 +11,10 @@ class HealthFoundationFactory
 {
     public static function from($configArray)
     {
+        if (!is_array($configArray)) {
+            throw new \RuntimeException('The given value is not an array.');
+        }
+
         $healthFoundation = new HealthFoundation();
 
         if (!array_key_exists('checks', $configArray)) {

@@ -21,10 +21,13 @@ class NumberOfLinesCheck extends BasicCheck
 
     private $pattern;
 
+    /**
+     * @return MetricAwareResult
+     */
     public function run()
     {
         if (!file_exists($this->file)) {
-            return new Result(Result::STATUS_FAIL, 'Unable to get document length because file does not exist.');
+            return new MetricAwareResult(Result::STATUS_FAIL, 'Unable to get document length because file does not exist.');
         }
 
         $numberLines = $this->getNumberOfLines();

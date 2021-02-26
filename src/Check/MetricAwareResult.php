@@ -99,7 +99,7 @@ class MetricAwareResult extends Result
      *
      * @param int $limit
      */
-    public function setLimit(int $limit)
+    public function setLimit($limit)
     {
         $this->limit = $limit;
     }

@@ -64,7 +64,7 @@ class KoalityFormat implements Format
                 $details[$identifier]["observedValue"] = $result->getMetricValue();
                 $details[$identifier]["observedUnit"] = $result->getMetricUnit();
 
-                if($result->getMetricType()) {
+                if ($result->getMetricType()) {
                     $details[$identifier]['metricType'] = $result->getMetricType();
                 }
 
@@ -79,6 +79,14 @@ class KoalityFormat implements Format
                 if (!is_null($result->getLimitType())) {
                     $details[$identifier]['limitType'] = $result->getLimitType();
                 }
+            } else {
+                if ($result->getStatus() == Result::STATUS_PASS) {
+                    $details[$identifier]["observedValue"] = 1;
+                } else {
+                    $details[$identifier]["observedValue"] = 0;
+                }
+                $details[$identifier]["metricType"] = MetricAwareResult::METRIC_TYPE_PERCENT;
+                $details[$identifier]["observedUnit"] = 'percent';
             }
 
             $attributes = $result->getAttributes();

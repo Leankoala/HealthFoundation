@@ -3,6 +3,7 @@
 namespace Leankoala\HealthFoundation\Check\System;
 
 use Leankoala\HealthFoundation\Check\Check;
+use Leankoala\HealthFoundation\Check\MetricAwareResult;
 use Leankoala\HealthFoundation\Check\Result;
 
 class NumberProcessesCheck implements Check
@@ -22,7 +23,6 @@ class NumberProcessesCheck implements Check
 
     public function run()
     {
-
         $command = 'ps ax  | grep -a "' . $this->processName . '" | wc -l';
 
         exec($command, $output);
@@ -30,14 +30,18 @@ class NumberProcessesCheck implements Check
         $count = (int)$output[0] - 2;
 
         if ($count > $this->maxNumber) {
-            return new Result(Result::STATUS_FAIL, 'Too many processes found "' . $this->processName . '" (current: ' . $count . ', expected < ' . $this->maxNumber . ').');
+            $result = new MetricAwareResult(Result::STATUS_FAIL, 'Too many processes found "' . $this->processName . '" (current: ' . $count . ', expected < ' . $this->maxNumber . ').');
+        } elseif ($count < $this->minNumber) {
+            $result = new MetricAwareResult(Result::STATUS_FAIL, 'Too few processes found "' . $this->processName . '" (current: ' . $count . ' , expected > ' . $this->maxNumber . ').');
+        } else {
+            $result = new MetricAwareResult(Result::STATUS_PASS, 'Number of processes "' . $this->processName . '" was within limits. Current number is ' . $count . '.');
         }
 
-        if ($count < $this->minNumber) {
-            return new Result(Result::STATUS_FAIL, 'Too few processes found "' . $this->processName . '" (current: ' . $count . ' , expected > ' . $this->maxNumber . ').');
-        }
+        $result->setMetric($count, 'processes');
+        $result->setLimit($this->maxNumber);
+        $result->setLimitType(MetricAwareResult::LIMIT_TYPE_MAX);
 
-        return new Result(Result::STATUS_PASS, 'Number of processes "' . $this->processName . '" was within limits. Current number is ' . $count . '.');
+        return $result;
     }
 
     public function getIdentifier()

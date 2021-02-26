@@ -25,9 +25,23 @@ class Result
         self::STATUS_FAIL => 100
     ];
 
+    const LIMIT_TYPE_MIN = 'min';
+    const LIMIT_TYPE_MAX = 'max';
+
+    /**
+     * @var string
+     */
     private $status;
 
+    /**
+     * @var string
+     */
     private $message;
+
+    /**
+     * @var array
+     */
+    private $attributes = [];
 
     /**
      * Result constructor.
@@ -52,9 +66,30 @@ class Result
     /**
      * @return string
      */
-    public function getMessage(): string
+    public function getMessage()
     {
         return $this->message;
+    }
+
+    /**
+     * Add a new attribute to the result.
+     *
+     * @param string $key
+     * @param mixed $value
+     */
+    public function addAttribute($key, $value)
+    {
+        $this->attributes[$key] = $value;
+    }
+
+    /**
+     * Return a list of attribute
+     *
+     * @return array
+     */
+    public function getAttributes()
+    {
+        return $this->attributes;
     }
 
     /**

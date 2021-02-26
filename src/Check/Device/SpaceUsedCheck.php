@@ -38,7 +38,7 @@ class SpaceUsedCheck implements Check
             $result = new MetricAwareResult(Result::STATUS_PASS, 'Enough space left on device. ' . $usage . '% used (' . $this->directory . ').');
         }
 
-        $result->setMetric($usage, 'percent', MetricAwareResult::METRIC_TYPE_PERCENT);
+        $result->setMetric($usage / 100, 'percent', MetricAwareResult::METRIC_TYPE_PERCENT);
         $result->setLimit($this->maxUsageInPercent);
         $result->setLimitType(MetricAwareResult::LIMIT_TYPE_MAX);
 

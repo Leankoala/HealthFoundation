@@ -37,9 +37,10 @@ class NumberProcessesCheck implements Check
             $result = new MetricAwareResult(Result::STATUS_PASS, 'Number of processes "' . $this->processName . '" was within limits. Current number is ' . $count . '.');
         }
 
-        $result->setMetric($count, 'processes');
+        $result->setMetric($count, 'process');
         $result->setLimit($this->maxNumber);
         $result->setLimitType(MetricAwareResult::LIMIT_TYPE_MAX);
+        $result->setObservedValuePrecision(0);
 
         return $result;
     }

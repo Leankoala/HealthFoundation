@@ -41,6 +41,7 @@ class SpaceUsedCheck implements Check
         $result->setMetric($usage / 100, 'percent', MetricAwareResult::METRIC_TYPE_PERCENT);
         $result->setLimit($this->maxUsageInPercent / 100);
         $result->setLimitType(MetricAwareResult::LIMIT_TYPE_MAX);
+        $result->setObservedValuePrecision(0);
 
         return $result;
     }

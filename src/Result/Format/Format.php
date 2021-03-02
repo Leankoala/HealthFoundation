@@ -6,5 +6,5 @@ use Leankoala\HealthFoundation\RunResult;
 
 interface Format
 {
-    public function handle(RunResult $runResult);
+    public function handle(RunResult $runResult, $echoValue = true);
 }

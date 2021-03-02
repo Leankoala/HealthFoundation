@@ -28,7 +28,7 @@ class IetfFormat implements Format
         }
     }
 
-    public function handle(RunResult $runResult)
+    public function handle(RunResult $runResult, $echoValue = true)
     {
         header('Content-Type: application/json');
 

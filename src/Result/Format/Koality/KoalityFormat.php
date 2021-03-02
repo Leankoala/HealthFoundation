@@ -28,7 +28,7 @@ class KoalityFormat implements Format
         }
     }
 
-    public function handle(RunResult $runResult)
+    public function handle(RunResult $runResult, $echoValue = true)
     {
         header('Content-Type: application/json');
 
@@ -101,7 +101,13 @@ class KoalityFormat implements Format
             'checks' => $details
         ];
 
-        echo json_encode($resultArray, JSON_PRETTY_PRINT);
+        $resultJson = json_encode($resultArray, JSON_PRETTY_PRINT);
+
+        if ($echoValue) {
+            echo $resultJson;
+        }
+
+        return $resultArray;
     }
 
     private function getOutput(RunResult $runResult, $passMessage = null, $failMessage = null)

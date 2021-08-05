@@ -28,6 +28,8 @@ class Result
     const LIMIT_TYPE_MIN = 'min';
     const LIMIT_TYPE_MAX = 'max';
 
+    const KOALITY_IDENTIFIER_ORDERS_TOO_FEW = 'orders.too_few';
+
     /**
      * @var string
      */

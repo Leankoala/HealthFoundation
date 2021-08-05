@@ -24,16 +24,15 @@ class StaticCheck implements Check
      */
     private $status;
 
-    public function __construct($identifier, $status, $message)
+    public function __construct($identifier, Result $result)
     {
         $this->identifier = $identifier;
-        $this->status = $status;
-        $this->message = $message;
+        $this->result = $result;
     }
 
     public function run()
     {
-        return new Result($this->status, $this->message);
+        return $this->result;
     }
 
     public function getIdentifier()

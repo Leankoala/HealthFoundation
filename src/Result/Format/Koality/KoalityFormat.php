@@ -17,7 +17,9 @@ class KoalityFormat implements Format
     private $passMessage = self::DEFAULT_OUTPUT_PASS;
     private $failMessage = self::DEFAULT_OUTPUT_FAIL;
 
-    public function __construct($passMessage = null, $failMessage = null)
+    private $dataProctection = false;
+
+    public function __construct($passMessage = null, $failMessage = null, $dataProctection = false)
     {
         if ($passMessage) {
             $this->passMessage = $passMessage;
@@ -26,6 +28,20 @@ class KoalityFormat implements Format
         if ($failMessage) {
             $this->failMessage = $failMessage;
         }
+
+        $this->dataProctection = $dataProctection;
+    }
+
+    private function comvertToDataProtectedResult(Result $result)
+    {
+        if ($result instanceof MetricAwareResult) {
+            $result->setLimitType(Result::LIMIT_TYPE_MIN);
+            $result->setLimit(1);
+            $result->setObservedValuePrecision(2);
+            $result->setMetric(1, 'percent', MetricAwareResult::METRIC_TYPE_PERCENT);
+        }
+
+        return $result;
     }
 
     public function handle(RunResult $runResult, $echoValue = true)
@@ -37,8 +53,13 @@ class KoalityFormat implements Format
         $details = [];
 
         foreach ($runResult->getResults() as $resultArray) {
+
             /** @var Result $result */
             $result = $resultArray['result'];
+
+            if ($this->dataProctection) {
+                $result = $this->comvertToDataProtectedResult($result);
+            }
 
             /** @var Check $check */
             $check = $resultArray['check'];

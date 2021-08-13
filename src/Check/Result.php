@@ -29,6 +29,7 @@ class Result
     const LIMIT_TYPE_MAX = 'max';
 
     const KOALITY_IDENTIFIER_ORDERS_TOO_FEW = 'orders.too_few';
+    const KOALITY_IDENTIFIER_PLUGINS_UPDATABLE = 'plugins.updatable';
 
     /**
      * @var string

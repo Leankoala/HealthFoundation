@@ -33,6 +33,8 @@ class Result
 
     const KOALITY_IDENTIFIER_SYSTEM_INSECURE = 'system.insecure';
 
+    const KOALITY_IDENTIFIER_SERVER_DICS_SPACE_USED = 'server.space.used';
+
     /**
      * @var string
      */

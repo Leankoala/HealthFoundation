@@ -30,6 +30,7 @@ class Result
 
     const KOALITY_IDENTIFIER_ORDERS_TOO_FEW = 'orders.too_few';
     const KOALITY_IDENTIFIER_PLUGINS_UPDATABLE = 'plugins.updatable';
+    const KOALITY_IDENTIFIER_PRODUCTS_COUNT = 'products.active';
 
     const KOALITY_IDENTIFIER_SYSTEM_INSECURE = 'system.insecure';
 

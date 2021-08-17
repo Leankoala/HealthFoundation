@@ -20,6 +20,9 @@ class HealthFoundation
      */
     private $httpClient;
 
+    /**
+     * @param Client $httpClient
+     */
     public function setHttpClient(Client $httpClient)
     {
         $this->httpClient = $httpClient;
@@ -39,7 +42,6 @@ class HealthFoundation
         return $this->httpClient;
     }
 
-
     /**
      * Return the current cache abstraction
      *
@@ -50,7 +52,7 @@ class HealthFoundation
         return new Cache($check->getIdentifier());
     }
 
-    public function registerCheck(Check $check, $identifier = false, $description = "")
+    public function registerCheck(Check $check, $identifier = false, $description = "", $group = "")
     {
         if ($check instanceof HttpClientAwareCheck) {
             $check->setHttpClient($this->getHttpClient());
@@ -61,9 +63,9 @@ class HealthFoundation
         }
 
         if ($identifier) {
-            $this->registeredChecks[$identifier] = ['check' => $check, 'description' => $description];
+            $this->registeredChecks[$identifier] = ['check' => $check, 'description' => $description, 'group' => $group];
         } else {
-            $this->registeredChecks[] = ['check' => $check, 'description' => $description];
+            $this->registeredChecks[] = ['check' => $check, 'description' => $description, 'group' => $group];
         }
     }
 
@@ -74,11 +76,13 @@ class HealthFoundation
         foreach ($this->registeredChecks as $identifier => $checkInfos) {
             /** @var Check $check */
             $check = $checkInfos['check'];
+            $group = $checkInfos['group'];
 
             $checkResult = $check->run();
-            $runResult->addResult($check, $checkResult, $identifier, $checkInfos['description']);
+            $runResult->addResult($check, $checkResult, $identifier, $checkInfos['description'], $group);
         }
 
         return $runResult;
     }
+
 }

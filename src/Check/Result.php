@@ -33,6 +33,7 @@ class Result
     const KOALITY_IDENTIFIER_PRODUCTS_COUNT = 'products.active';
 
     const KOALITY_IDENTIFIER_SYSTEM_INSECURE = 'system.insecure';
+    const KOALITY_IDENTIFIER_SECURITY_USERS_ADMIN_COUNT = 'security.user.admin.count';
 
     const KOALITY_IDENTIFIER_SERVER_DICS_SPACE_USED = 'server.space.used';
 

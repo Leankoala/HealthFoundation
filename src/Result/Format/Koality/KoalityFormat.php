@@ -64,7 +64,6 @@ class KoalityFormat implements Format
             /** @var Check $check */
             $check = $resultArray['check'];
 
-
             if (is_string($resultArray['identifier'])) {
                 $identifier = $resultArray['identifier'];
             } else {
@@ -75,6 +74,13 @@ class KoalityFormat implements Format
                 'status' => $result->getStatus(),
                 'output' => $result->getMessage()
             ];
+
+            /** @var string $group */
+            $group = $resultArray['group'];
+
+            if($group) {
+                $details[$identifier]['group'] = $group;
+            }
 
             $description = $resultArray['description'];
             if ($description) {
@@ -112,7 +118,7 @@ class KoalityFormat implements Format
 
             $attributes = $result->getAttributes();
             if (count($attributes) > 0) {
-                $details['attributes'] = $attributes;
+                $details[$identifier]['attributes'] = $attributes;
             }
         }
 

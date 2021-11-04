@@ -10,7 +10,7 @@ class NumberOfLinesCheck extends BasicCheck
 {
     protected $identifier = 'base:files:content:numberOfLines';
 
-    private $files;
+    private $files = [];
 
     private $relation;
 
@@ -81,6 +81,8 @@ class NumberOfLinesCheck extends BasicCheck
         }
 
         $result->setMetric($numberLines, 'lines');
+
+        $result->addAttribute('files', $this->files);
 
         return $result;
     }

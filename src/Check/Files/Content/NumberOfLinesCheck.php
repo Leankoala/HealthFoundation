@@ -19,7 +19,7 @@ class NumberOfLinesCheck extends BasicCheck
     const RELATION_MAX = 'max';
     const RELATION_MIN = 'min';
 
-    private $pattern;
+    private $pattern = [];
 
     /**
      * @return MetricAwareResult
@@ -83,11 +83,12 @@ class NumberOfLinesCheck extends BasicCheck
         $result->setMetric($numberLines, 'lines');
 
         $result->addAttribute('files', $this->files);
+        $result->addAttribute('pattern', $this->pattern);
 
         return $result;
     }
 
-    public function init($files, $limit, $relation = self::RELATION_MAX, $pattern = null)
+    public function init($files, $limit, $relation = self::RELATION_MAX, $pattern = [])
     {
         if (is_string($files)) {
             $files = [$file];

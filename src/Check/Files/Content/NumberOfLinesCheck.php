@@ -53,7 +53,7 @@ class NumberOfLinesCheck extends BasicCheck
             }
 
             $command = 'cat ' . $file . $grep . ' | wc -l';
-
+            $output = [];
             exec($command, $output, $return);
             $numberOfLines += (int)$output[0];
         }
